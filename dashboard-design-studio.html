@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Design Studio - Afeeza Designs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Change hero title decorative dash color from red to #1C5A73 */
+        .hero-title::after {
+            background: #1C5A73 !important;
+        }
+        
+        /* Project Overview heading with blue underline */
+        #project-overview h2::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -8px !important;
+            left: 0 !important;
+            width: 80px !important;
+            height: 5px !important;
+            background: #1C5A73 !important;
+            border-radius: 3px !important;
+            z-index: 10 !important;
+        }
+        
+        /* All project overview h2 headings with blue underline */
+        .project-overview h2::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -8px !important;
+            left: 0 !important;
+            width: 80px !important;
+            height: 5px !important;
+            background: #1C5A73 !important;
+            border-radius: 3px !important;
+            z-index: 10 !important;
+        }
+        
+        /* Related projects h2 heading with blue underline */
+        .related-projects h2::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -8px !important;
+            left: 0 !important;
+            width: 80px !important;
+            height: 5px !important;
+            background: #1C5A73 !important;
+            border-radius: 3px !important;
+            z-index: 10 !important;
+        }
+
+        /* Remove decorative line from related projects heading */
+        .related-projects h2::after {
+            display: none !important;
+        }
+        
+        /* Remove decorative vertical dashes from h4 subheadings */
+        .case-study-content h4::before {
+            content: none !important;
+        }
+        
+        .before-after-slider-section {
+            margin-bottom: 2rem;
+        }
+        
+        /* Make metrics section full-width and add looping animation */
+        .metrics-summary .container { 
+            max-width: none; 
+            padding: 0; 
+            margin: 0; 
+            overflow: hidden; /* viewport */
+        }
+        .metrics-grid { 
+            display: flex;
+            gap: 1.5rem; 
+            padding: 0 20px;
+            width: max-content; /* track expands to content */
+            animation: metrics-scroll 30s linear infinite; 
+        }
+        .metrics-grid .metric-item { 
+            flex: 0 0 calc(25% - 1.125rem);
+            min-width: calc(25% - 1.125rem);
+        }
+        @keyframes metrics-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .before-slider, .after-slider {
+            overflow: hidden;
+            position: relative;
+            width: 950px;
+        }
+        
+        .before-track, .after-track {
+            display: flex;
+            transition: transform 0.3s ease;
+            gap: 16px;
+        }
+        
+        .before-slide, .after-slide {
+            flex-shrink: 0;
+            display: flex;
+            justify-content: flex-start;
+        }
+        
+        .carousel-arrow {
+            background: #f5f5f5;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .carousel-arrow:hover {
+            background: #e0e0e0;
+            transform: scale(1.05);
+        }
+        
+        .carousel-prev {
+            margin-right: 8px;
+        }
+        
+        .carousel-next {
+            margin-left: 8px;
+        }
+        
+        .carousel-arrow i {
+            color: #666;
+            font-size: 18px;
+        }
+        
+        /* Navigation hover effects */
+        .case-study-nav .nav-item:hover {
+            color: #1C5A73 !important;
+            background: #f0f4f7 !important;
+            border-left: 3px solid #1C5A73 !important;
+        }
+        
+        /* Image Modal Styles */
+        .image-modal {
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .image-modal img {
+            max-width: 70%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .close-modal {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+        }
+        
+
+        
+        .close-modal {
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 10000;
+        }
+        
+        /* Nuclear option - override ALL external CSS for meta-labels */
+        .project-content-sidebar .sidebar-meta .meta-item .meta-label,
+        .project-content-sidebar .sidebar-meta .meta-item .meta-label:hover,
+        .project-content-sidebar .sidebar-meta .meta-item .meta-label:focus,
+        .project-content-sidebar .sidebar-meta .meta-item .meta-label:active,
+        .project-content-sidebar .sidebar-meta .meta-item .meta-label::before,
+        .project-content-sidebar .sidebar-meta .meta-item .meta-label::after {
+            background-color: #f0f4f7 !important;
+            background: #f0f4f7 !important;
+            color: #1C5A73 !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            transform: none !important;
+            transition: none !important;
+        }
+        
+        .close-modal:hover {
+            background: #f0f0f0;
+            transform: scale(1.1);
+        }
+        
+        /* Make images look clickable */
+        img {
+            transition: transform 0.2s ease;
+        }
+        
+        img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Disable hover effects on hero image */
+        .project-hero-image img:hover {
+            transform: none;
+        }
+        
+        /* Make hero image non-clickable */
+        .project-hero-image img {
+            pointer-events: none;
+        }
+        
+        /* Key Learnings h2 heading with blue underline */
+        #key-learnings h2::after {
+            content: none !important;
+        }
+        
+        /* UX Flows Walkthrough h2 heading with blue underline */
+        .case-study-content h2::after {
+            content: none !important;
+        }
+        
+        /* Related projects h2 heading with blue underline */
+        .related-projects h2::after {
+            content: none !important;
+        }
+        
+        /* Disable hover effects when modal is open */
+        .image-modal img:hover {
+            transform: none;
+        }
+        
+        /* Disable hover effects on background images when modal is open */
+        .image-modal ~ * img:hover,
+        .image-modal ~ img:hover {
+            transform: none;
+        }
+        
+        /* Ensure modal image stays stable */
+        .image-modal img {
+            pointer-events: none;
+        }
+        
+        /* Metrics styling to match hero title */
+        .metrics-grid .metric-number {
+            color: #1a1a1a !important;
+            font-weight: 800 !important;
+        }
+        .metrics-grid .metric-content {
+            color: #1C5A73 !important;
+            font-weight: 700 !important;
+        }
+    </style>
+</head>
+<body class="dashboard-design-studio">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html#home" class="nav-logo">
+            <div class="logo-icon"></div>
+            <span>Afeeza Ali</span>
+        </a>
+        
+        <div class="nav-menu-toggle">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
+            <div class="project-hero-content">
+                <div class="hero-layout">
+                    <div class="hero-left">
+                        <a href="index.html" class="back-button" style="color: #000000; margin-bottom: 1rem;">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Portfolio
+                        </a>
+                        <h1 class="hero-title">Dashboard Design Studio</h1>
+                        <div style="background: rgba(28, 90, 115, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid #1C5A73; margin-bottom: 1.5rem;">
+                            <p class="hero-subtitle" style="margin: 0; color: #1C5A73; font-weight: 500;">Led the redesign of a data-heavy SaaS dashboard studio that allows business users to fully customize their trend analysis view.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-right" style="padding: 0; margin: 0; position: relative; right: -20px;">
+                        <div class="project-hero-image" style="background: none; box-shadow: none; width: calc(100% + 20px); margin: 0; border-radius: 0; min-height: 530px; display: flex; align-items: center; justify-content: center;">
+                            <img src="Images/Dashbaord.png" alt="Dashboard Design Studio Cover" style="border-radius: 20px; width: 100%; height: 100%; max-width: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Summary -->
+    <section class="metrics-summary">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-number">100+</div>
+                    <div class="metric-content">core components designed with configurable behavior and design logic</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">5+</div>
+                    <div class="metric-content">core user flows prototyped and validated through usability testing</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">30+</div>
+                    <div class="metric-content">Jira tickets created with full interaction specs, edge cases, and dev notes</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">90%</div>
+                    <div class="metric-content">users rated the redesigned experience 4/5 out of 5 for usability and visual clarity</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">2x</div>
+                    <div class="metric-content">faster task completion during usability testing for key actions like sharing and styling a card</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">40%</div>
+                    <div class="metric-content">faster design-to-development handoff due to ready-to-use components and clear documentation</div>
+                </div>
+                <!-- Duplicate tiles for infinite loop -->
+                <div class="metric-item">
+                    <div class="metric-number">100+</div>
+                    <div class="metric-content">core components designed with configurable behavior and design logic</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">5+</div>
+                    <div class="metric-content">core user flows prototyped and validated through usability testing</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">30+</div>
+                    <div class="metric-content">Jira tickets created with full interaction specs, edge cases, and dev notes</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">90%</div>
+                    <div class="metric-content">users rated the redesigned experience 4/5 out of 5 for usability and visual clarity</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">2x</div>
+                    <div class="metric-content">faster task completion during usability testing for key actions like sharing and styling a card</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number">40%</div>
+                    <div class="metric-content">faster design-to-development handoff due to ready-to-use components and clear documentation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <section id="project-overview-main" class="project-content-wrapper">
+        <div class="project-content-full">
+        <div class="project-content-main">
+            <div id="project-overview" class="project-overview">
+                <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px;">Project Overview</h2>
+                <p>Apromore is a process mining software used by business analysts to monitor and improve business operations.</p>
+                
+                <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 1.5rem 0 0.8rem;">The Feature</h3>
+                <p>The Dashboard is a core feature of Apromore that allows users to track KPIs, visualize trends, and share process insights across teams.</p>
+                
+                <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 1.5rem 0 0.8rem;">The Problem</h3>
+                <p>The classic dashboard in Apromore allowed users to view and track KPIs — but the experience was rigid and inflexible:</p>
+                <ul>
+                    <li><strong>Lack of Flexibility</strong> – Dashboards were predefined and static, with no option to add or customize widgets</li>
+                    <li><strong>No Modular System</strong> – Every dashboard was hardcoded and resulted in long dev cycles for updates</li>
+                    <li><strong>Unclear Hierarchy & Layout</strong> – Lack of a grid system or consistent layout led to cluttered and hard-to-scan dashboards</li>
+                    <li><strong>Legacy UI</strong> – The old UI lacked modern look and feel. The redesign was aimed to migrate the UI to a modern react framework</li>
+                </ul>
+                
+                <p>A consistent demand for more control and speed by customers pointed out that the classic dashboard became a bottleneck and the dashboard redesign project was born.</p>
+                
+                <div class="project-image-placeholder" style="width: 100%; margin: 0; background: none; box-shadow: none;">
+                    <img src="Images/Before.png" alt="Dashboard Context - Before State" style="width: 100%; height: auto; border-radius: 15px;">
+                </div>
+            </div>
+
+            <div class="project-overview">
+                <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px;">The Scope & The Squad</h2>
+                <p>The objective was to transform the legacy dashboard into a fully self-serve, modular dashboard studio.</p>
+                
+                <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 1.5rem 0 0.8rem;">Key Redesign Features</h3>
+                <ul>
+                    <li>Create dashboards from scratch using a flexible, grid-based canvas</li>
+                    <li>Add and configure widgets(KPIs, Charts, Text, Links) based on business needs</li>
+                    <li>Resize, reposition, and edit widgets in real time — without leaving the screen</li>
+                    <li>Apply filters, switch between views, and share dashboards across teams</li>
+                    <li>Do all of this with a easy to use drag and drop interface</li>
+                </ul>
+                
+                <p>We aimed to make data insights <strong>"as configurable and accessible as a slide deck"</strong>, but grounded in real-time process intelligence.</p>
+                
+                <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 1.5rem 0 0.8rem;">The Team</h3>
+                <p>To bring this vision to life, we worked in a product triad:</p>
+                <ul>
+                    <li><strong>I led UX and interaction design</strong>, covering all the core components in dashboard (refer to the deliverables on the right)</li>
+                    <li><strong>Product managers</strong> shaped requirements and aligned the roadmap</li>
+                    <li><strong>Engineers</strong> partnered with us closely to validate technical feasibility</li>
+                </ul>
+                
+                <p>This close collaboration helped us move fast, test early, and ship with confidence.</p>
+                
+                <div class="project-image-placeholder" style="width: 100%; margin: 0; background: none; box-shadow: none;">
+                    <img src="Images/DashTeam.png" alt="Dashboard Design Studio Team" style="width: 100%; max-width: 900px; height: auto; object-fit: contain; border-radius: 15px; margin: 0; cursor: default; pointer-events: none;">
+                </div>
+            </div>
+
+            <div class="project-overview">
+                <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px;">The Design Sprint</h2>
+                <p>We worked in agile sprints and followed an iterative design process. We prioritized continuous feedback and close collaboration between design, product and engineering. Each phase from discovery to developer handoff was focused on meeting user needs and feasibility checks.</p>
+                
+                <div class="design-sprint-grid">
+                    <div class="sprint-heading" style="color: #1C5A73 !important; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #1C5A73;">1. User Research & Workflow Mapping</div>
+                    <div class="sprint-content">Through relationship managers, we uncovered key friction points—especially around interpreting complex models. Users wanted help that was fast, contextual, and trustworthy.</div>
+                    
+                    <div class="sprint-heading" style="color: #1C5A73; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #1C5A73;">2. Ideation & Sketching</div>
+                    <div class="sprint-content">Each designer contributed based on their scope. As the lead designer, I was responsible for led the design of core building blocks—widgets, interaction flows, settings panels, tab navigations, and the toolbars.</div>
+                    
+                    <div class="sprint-heading" style="color: #1C5A73; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #1C5A73;">3. Feedback Loops & Stakeholder Reviews</div>
+                    <div class="sprint-content">Designs were shared iteratively across design, dev and business stakeholder reviews. We held async feedback cycles and co-working sessions to validate flows, component logic, and user scenarios.</div>
+                    
+                    <div class="sprint-heading" style="color: #1C5A73; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #1C5A73;">4. Iterate & Iterate Some More</div>
+                    <div class="sprint-content">We refined wireframes and prototypes through multiple usability rounds. Designs progressed through a structured Jira design board, moving back and forth from <strong>In Design → In Review → In Card Writing → Done</strong>.</div>
+                    
+                    <div class="sprint-heading" style="color: #1C5A73; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #1C5A73;">5. Jira Cards & Developer Ready Specs</div>
+                    <div class="sprint-content">To support smooth implementation, I wrote detailed Jira tickets for each widget and UI element I designed. These tickets included design context, interaction logic, edge case handling, and direct links to Figma files—ensuring developers had everything needed to build with clarity and accuracy.</div>
+                </div>
+            </div>
+
+            <div class="project-overview">
+                <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px;">The Outcome</h2>
+                <p>What once was a rigid, developer-dependent interface became a <strong>self-serve canvas</strong> that gave business users full control to explore, organize, and act on process insights.</p>
+                
+                <p>The Dashboard Design Studio came out as a fully customizable, user-friendly canvas for creating and organizing process insights at scale. Users could build the exact data visualization view they need with ease and simplicity. This redesigned feature became a flagship element of the product.</p>
+                
+                <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 1.5rem 0 0.8rem;">Key UX Deliverables</h3>
+                <ul>
+                    <li><strong>Flexible grid-based canvas</strong> with smart resize, snap-to-align, and responsive spacing rules</li>
+                    <li><strong>Widgets system</strong> created with 6 fully configurable types: KPI, Chart, Text, Link, Shortcut, and Placeholder</li>
+                    <li><strong>Settings panel UX</strong> built to control content, visuals, filters, and widget-specific behaviors</li>
+                    <li><strong>Navigation & toolbar components</strong> designed to support tab switching, dashboard actions, and responsive behavior</li>
+                    <li><strong>Figma component library</strong> structured with reusable components mapped to design tokens and states</li>
+                </ul>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Core components designed with configurable behavior and design logic</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Core user flows prototyped</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Jira tickets created with full interaction specs, edge cases, and dev notes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">Users rated the redesigned experience 4/5 out of 5 for usability and visual clarity</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2x</div>
+                    <div class="stat-label">Faster task completion during usability testing for key actions like sharing and styling a card</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">Faster design-to-development handoff due to ready-to-use components and clear documentation</div>
+                </div>
+            </div>
+
+            <div class="project-image" style="display: block; text-align: left; background: none; height: auto;">
+                <div style="width: 100%; max-width: 1200px; margin: 2rem 0 0;">
+                    <iframe 
+                        width="100%" 
+                        height="500" 
+                        src="https://www.youtube.com/embed/93BV3hPjc_Y" 
+                        title="Apromore Dashboard Design Studio Demo" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        style="border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+                    <div class="project-content-sidebar">
+            <div class="sidebar-heading" style="background-color: #1C5A73; color: white; padding: 1.5rem 1rem; position: sticky; top: -2rem; margin: -5rem -2rem 0 -2rem; text-align: center; font-size: 1rem; font-weight: 500; letter-spacing: 0.5px; z-index: 10; display: flex; align-items: center; justify-content: center;">
+                PROJECT OVERVIEW
+            </div>
+            <div class="sidebar-meta" style="padding-top: 5rem;">
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #1C5A73; padding-left: 8px;">Company</span>
+                    <span class="meta-value">Apromore</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #1C5A73; padding-left: 8px;">Project Category</span>
+                    <span class="meta-value">SaaS Dashboard</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #1C5A73; padding-left: 8px;">Role</span>
+                    <span class="meta-value">Lead Product Designer</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #1C5A73; padding-left: 8px;">Tech Stack</span>
+                    <span class="meta-value">• Figma<br>• Jira<br>• Confluence<br>• Adobe Illustrator<br>• HTML & CSS</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #1C5A73; padding-left: 8px;">Deliverables</span>
+                    <span class="meta-value">• Dashboard Designs<br>• Settings Panels<br>• Nav Elements<br>• Toolbars<br>• Widgets<br>&nbsp;&nbsp;&nbsp;&nbsp;• Charts<br>&nbsp;&nbsp;&nbsp;&nbsp;• KPI/Metrics<br>&nbsp;&nbsp;&nbsp;&nbsp;• Text box<br>&nbsp;&nbsp;&nbsp;&nbsp;• Web Links<br>&nbsp;&nbsp;&nbsp;&nbsp;• Shortcuts<br>• Figma Component Library<br>• Interaction Design<br>• Jira Tickets for Devs</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #1C5A73; padding-left: 8px;">Date</span>
+                    <span class="meta-value">Q3 2024</span>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Case Study Section -->
+    <section class="case-study">
+        <div class="project-content-wrapper">
+            <div class="project-content-full" style="display: flex; gap: 3rem;">
+            <!-- Left Sticky Navigation -->
+                <div class="case-study-nav" style="position: sticky; top: 120px; width: 280px; height: fit-content; align-self: flex-start; padding: 24px !important; flex-shrink: 0;">
+                    <div class="nav-item active" data-target="project-overview-main" style="padding: 0.5rem 16px !important; margin: 0.5rem 0; border-radius: 4px; cursor: pointer; transition: none !important; transform: none !important;">Project Overview</div>
+                    <div class="nav-item" data-target="create-dashboard" style="padding: 0.5rem 16px !important; margin: 0.5rem 0; border-radius: 4px; cursor: pointer; transition: none !important; transform: none !important;">Create Dashboard</div>
+                    <div class="nav-item" data-target="add-widgets" style="padding: 0.5rem 16px !important; margin: 0.5rem 0; border-radius: 4px; cursor: pointer; transition: none !important; transform: none !important;">Add Widgets</div>
+                    <div class="nav-item" data-target="edit-widgets" style="padding: 0.5rem 16px !important; margin: 0.5rem 0; border-radius: 4px; cursor: pointer; transition: none !important; transform: none !important;">Edit Widgets</div>
+                    <div class="nav-item" data-target="manage-dashboard" style="padding: 0.5rem 16px !important; margin: 0.5rem 0; border-radius: 4px; cursor: pointer; transition: none !important; transform: none !important;">Manage Dashboard</div>
+                    <div class="nav-item" data-target="before-vs-after" style="padding: 0.5rem 16px !important; margin: 0.5rem 0; border-radius: 4px; cursor: pointer; transition: none !important; transform: none !important;">Before vs After</div>
+                    <div class="nav-item" data-target="key-learnings" style="padding: 0.5rem 16px !important; margin: 0.5rem 0; border-radius: 4px; cursor: pointer; transition: none !important; transform: none !important;">Key Learnings</div>
+                </div>
+
+            <!-- Right Content Area -->
+                <div class="project-content-main" style="flex: 1;">
+            <div class="case-study-content">
+                <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px; font-size: 48px; font-weight: 800;">UX Flows Walkthrough</h2>
+                <p>A step-by-step overview of the core dashboard workflows, paired with UI snapshots. Each section showcases how users interact with the dashboard and how the UI adapts to different needs.</p>
+
+                <div id="create-dashboard" class="case-study-section" style="margin: 16px 0;">
+                    <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 1rem;">Create Dashboard</h3>
+                    <p>Users click Add new, name the dashboard, and land on a clean, grid-based canvas—ready to add and arrange widgets.</p>
+                    <div class="case-study-image" style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; background: none; height: auto;">
+                        <div style="display: flex; gap: 1rem; width: 100%; align-items: flex-start;">
+                            <img src="Images/CreateDash2.png" alt="Create Dashboard Step 2" style="width: 48%; height: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <div style="display: flex; flex-direction: column; gap: 1rem; width: 48%;">
+                                <img src="Images/CreateDash.png" alt="Create Dashboard Step 1" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                <img src="Images/After3.png" alt="Create Dashboard After State" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            </div>
+                        </div>
+                        <img src="Images/CreateDash3.png" alt="Create Dashboard Step 3" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+
+
+
+                <div id="add-widgets" class="case-study-section" style="margin: 16px 0;">
+                    <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 1rem;">Add Widgets</h3>
+                    <p>Users can drag and drop widgets like Charts, KPIs, Text, or Links onto the canvas. Each widget adapts to the grid, supports resizing, and can be configured via a settings side panel.</p>
+
+                    <div class="case-study-subsection" style="padding-left: 0; margin: 2rem 0;">
+                        <h4 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 0.8rem;">KPI / Metric Widget</h4>
+                    <p>Displays high-level numeric insights like case counts, durations, or percentages. Users choose a metric, set formatting, and optionally apply thresholds or comparison logic.</p>
+                        <div class="case-study-image" style="background: none; height: auto;">
+                            <img src="Images/AddKPI.png" alt="KPI Widget Example" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        </div>
+                </div>
+
+                    <div class="case-study-subsection" style="padding-left: 0; margin: 2rem 0;">
+                        <h4 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 0.8rem;">Chart Widget</h4>
+                    <p>Users can select from various chart types (bar, line, etc.) and bind them to process data. Configuration includes choosing dimensions, metrics, and filters via the settings panel.</p>
+                        <div class="case-study-image" style="background: none; height: auto;">
+                            <img src="Images/AddKPI2.png" alt="Chart Widget Example" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        </div>
+                </div>
+
+                    <div class="case-study-subsection" style="padding-left: 0; margin: 2rem 0;">
+                        <h4 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 0.8rem;">Text Widget</h4>
+                    <p>Ideal for adding context, headings, or notes. Users can enter rich text, style it, align content, and adjust the border to match dashboard themes.</p>
+                        <div class="case-study-image" style="background: none; height: auto;">
+                            <img src="Images/AddKPI4.png" alt="Text Widget Example" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        </div>
+                </div>
+
+                    <div class="case-study-subsection" style="padding-left: 0; margin: 2rem 0;">
+                        <h4 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 0.8rem;">Link / Shortcut Widget</h4>
+                    <p>Lets users add navigation links to other dashboards or external tools. Configurable label, icon, and URL field make it simple to create useful quick-access tiles.</p>
+                        <div class="case-study-image" style="background: none; height: auto;">
+                            <img src="Images/AddKPI5.png" alt="Link Widget Example" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="edit-widgets" class="case-study-section" style="margin: 16px 0;">
+                    <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 1rem;">Edit Widgets</h3>
+                    <p>Users can click on any widget to open its settings panel. Here, they can update the content, appearance, or data bindings in real time—without leaving the canvas.</p>
+                    <div class="case-study-image" style="background: none; height: auto;">
+                        <img src="Images/AddKPI6.png" alt="Edit Widgets Example" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    
+                    <div class="case-study-subsection" style="padding-left: 0; margin: 2rem 0;">
+                        <h4 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 0.8rem;">Format Content</h4>
+                        <p>Users can customize each widget's content and appearance—adjusting text alignment, font styles, border color, and background—all from the settings panel.</p>
+                        <div class="case-study-image" style="background: none; height: auto;">
+                            <img src="Images/AddKPI8.png" alt="Format Content Example" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+
+                    <div class="case-study-subsection" style="padding-left: 0; margin: 2rem 0;">
+                        <h4 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 0.8rem;">Resize Widget</h4>
+                    <p>Widgets can be resized directly on the canvas by dragging their corners. The snap-to-grid system ensures alignment and consistency across layouts.</p>
+                    <div class="case-study-image" style="background: none; height: auto;">
+                        <img src="Images/AddKPI.png" alt="Resize Widget Example" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    </div>
+                    </div>
+                </div>
+
+                <div id="manage-dashboard" class="case-study-section" style="margin: 16px 0;">
+                    <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 1rem;">Manage Dashboard</h3>
+                    <p>Once dashboards are created and configured, users need comprehensive tools to manage, share, and maintain their data insights. The redesigned dashboard allows essential workflows that enable collaboration and dashboard lifecycle management.</p>
+                </div>
+
+                <div class="case-study-subsection" style="padding-left: 0; margin: 2rem 0;">
+                    <h4 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 0.8rem;">Manage Views</h4>
+                    <p>Users can create, save, and switch between multiple views to customize how data is presented for different use cases.</p>
+                    <div class="case-study-image" style="display: flex; gap: 1rem; align-items: flex-start; background: none; height: auto;">
+                        <img src="Images/ManageDash.png" alt="Manage Views Example" style="width: 48%; height: 316px; object-fit: cover; object-position: left; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <img src="Images/After3.png" alt="Manage Views Example 2" style="width: 48%; height: 316px; object-fit: cover; object-position: left; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+
+                <div class="case-study-subsection" style="padding-left: 0; margin: 2rem 0;">
+                    <h4 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 0.8rem;">Share Dashboard</h4>
+                    <p>Dashboards can be shared with colleagues through permission controls, enabling collaborative access.</p>
+                    <div class="case-study-image" style="display: flex; gap: 1rem; align-items: flex-start; background: none; height: auto;">
+                        <img src="Images/ShareDash.png" alt="Share Dashboard Example" style="width: 48%; height: 316px; object-fit: cover; object-position: left; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <img src="Images/SharedDash2.png" alt="Share Dashboard Example 2" style="width: 48%; height: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+
+                <div class="case-study-subsection" style="padding-left: 0; margin: 2rem 0;">
+                    <h4 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 0.8rem;">Edit Dashboard</h4>
+                    <p>Users can edit a dashboard to change widgets, data sources, or its design. To edit a dashboard, users open the Dashboard page in the Portal and select the dashboard to edit.</p>
+                    <div class="case-study-image" style="background: none; height: auto;">
+                        <img src="Images/EditDash.png" alt="Edit Dashboard Example" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+
+                <div id="before-vs-after" class="case-study-section" style="margin: 16px 0;">
+                    <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 1rem;">Before vs After</h3>
+                    <p>Compare the legacy dashboard experience with the redesigned, user-friendly interface that transformed how business users interact with their data.</p>
+                    
+                    <!-- Before Slider -->
+                    <div class="before-after-slider-section" style="margin: 2rem 0;">
+                        <h4 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 0.8rem;">Before - Legacy Dashboard</h4>
+                        <div class="slider-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <p>The legacy dashboard had a rigid layout, limited customization, and inconsistent UI patterns, making it hard for users to create meaningful insights efficiently.</p>
+                            <div class="carousel-controls" style="display: flex;">
+                                <button class="carousel-arrow carousel-prev" onclick="slideBefore('prev')">
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+                                <button class="carousel-arrow carousel-next" onclick="slideBefore('next')">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div style="width: calc(100% + 16px); overflow: hidden;">
+                            <div class="before-slider" style="margin-left: 16px;">
+                            <div class="before-track" id="beforeTrack">
+                                <div class="before-slide">
+                                    <img src="Images/Before1.png" alt="Legacy Dashboard 1" style="width: 600px; height: 400px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                </div>
+                                <div class="before-slide">
+                                    <img src="Images/Before2.png" alt="Legacy Dashboard 2" style="width: 600px; height: 400px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                </div>
+                                <div class="before-slide">
+                                    <img src="Images/Before3.png" alt="Legacy Dashboard 3" style="width: 600px; height: 400px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                    </div>
+                                    <div class="before-slide">
+                                        <img src="Images/Before4.png" alt="Legacy Dashboard 4" style="width: 600px; height: 400px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- After Slider -->
+                    <div class="before-after-slider-section" style="margin: 2rem 0;">
+                        <h4 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 0 0 0.8rem;">After - Redesigned Dashboard</h4>
+                        <div class="slider-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <p>The redesigned dashboard introduced a flexible, component-based canvas with improved usability, responsive design, and end-to-end customization through a clean, modern UI.</p>
+                            <div class="carousel-controls" style="display: flex;">
+                                <button class="carousel-arrow carousel-prev" onclick="slideAfter('prev')">
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+                                <button class="carousel-arrow carousel-next" onclick="slideAfter('next')">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                    </div>
+                </div>
+
+                        <div style="width: calc(100% + 16px); overflow: hidden;">
+                            <div class="after-slider" style="margin-left: 16px;">
+                            <div class="after-track" id="afterTrack">
+                                <div class="after-slide">
+                                        <img src="Images/After1.png" alt="Redesigned Dashboard 1" style="width: 600px; height: 400px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                </div>
+                                <div class="after-slide">
+                                        <img src="Images/After2.png" alt="Redesigned Dashboard 2" style="width: 600px; height: 400px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                </div>
+                                <div class="after-slide">
+                                        <img src="Images/After3.png" alt="Redesigned Dashboard 3" style="width: 600px; height: 400px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                </div>
+                                <div class="after-slide">
+                                        <img src="Images/After4.png" alt="Redesigned Dashboard 4" style="width: 600px; height: 400px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="key-learnings" class="case-study-section">
+                    <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px; font-size: 48px; font-weight: 800;">Key Learnings</h2>
+                    
+                    <h4 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 1.5rem 0 0.8rem;">Iterative feedback drives success:</h4>
+                    <p>During this project, regularly syncing with engineers helped me understand technical constraints early, which saved us from redesigning later. At the same time, hearing business stakeholders' priorities pushed me to balance user needs with company goals. This constant back-and-forth taught me that great design is never done in isolation — it's a team sport where communication is everything.</p>
+                    
+                    <h4 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #1C5A73; margin: 1.5rem 0 0.8rem;">Clear development specifications is essential:</h4>
+                    <p>I realized that if I want my designs to be built right and fast, I need to make the handoff as easy as possible for developers. So I got really intentional about documenting states, spacing, and behaviors in Figma, then broke down everything into digestible, actionable Jira cards. This saved so much back-and-forth during development and helped keep everyone aligned.</p>
+                </div>
+            </div>
+        </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- You Might Be Interested In Section -->
+    <section class="related-projects">
+        <div class="related-projects-container">
+            <h2>You might be interested in:</h2>
+            <div class="related-projects-grid" style="display: grid; grid-template-columns: repeat(5, 250px); gap: 2rem; margin: 24px auto; justify-content: center;">
+                <a href="dashboard-design-studio.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Dashbaord.png" alt="Dashboard Design Studio" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">Dashboard Design Studio</h3>
+                    <p style="width: 100%; margin: 0;">SaaS Data Dashboard</p>
+                </a>
+
+                <a href="design-system.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Design System.jpg" alt="Design System" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">Design System</h3>
+                    <p style="width: 100%; margin: 0;">SaaS design library</p>
+                </a>
+
+                <a href="deets-app-case-study.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Deets.jpg" alt="Deets App" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">Deets App</h3>
+                    <p style="width: 100%; margin: 0;">Mobile App MVP</p>
+                </a>
+
+                <a href="deepslice-pizza.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Deepslice.png" alt="DeepSlice Pizza" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">DeepSlice Pizza</h3>
+                    <p style="width: 100%; margin: 0;">Food Web and Mobile App</p>
+                </a>
+
+                <a href="gen-ai-design.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Gen AI.png" alt="Gen AI Design" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">Gen AI Design</h3>
+                    <p style="width: 100%; margin: 0;">Enterprise SaaS – Gen AI</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+                    <a href="index.html#home" class="footer-link">Home</a>
+                    <a href="index.html#about" class="footer-link">About</a>
+                    <a href="index.html#projects" class="footer-link">Projects</a>
+                    <a href="index.html#testimonials" class="footer-link">Testimonials</a>
+                </div>
+                
+                <div class="footer-cta-container">
+                    <div class="footer-cta-box">
+                        <div class="footer-cta-content">
+                            <div class="footer-cta-left">
+                                <h2 class="footer-title">Have a project in mind? Let's chat!</h2>
+                                <div class="footer-email">
+                                    <i class="fas fa-envelope"></i>
+                                    <a href="mailto:afeeza1.aa@gmail.com">afeeza1.aa@gmail.com</a>
+                                </div>
+                            </div>
+                            <a href="mailto:afeeza1.aa@gmail.com" class="footer-contact-btn">
+                                Contact me
+                                <i class="fas fa-paper-plane"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <span class="footer-social-text">Follow my work on:</span>
+                    <div class="social-links">
+                        <a href="https://medium.com" target="_blank" class="social-link">
+                            <i class="fab fa-medium"></i>
+                        </a>
+                        <a href="https://scholar.google.com" target="_blank" class="social-link">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal" style="display: none;">
+        <span class="close-modal">&times;</span>
+        <img id="modalImage" src="" alt="Full size image">
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Before slider functionality
+        let beforeCurrentSlide = 0;
+        const beforeTrack = document.getElementById('beforeTrack');
+        const beforeSlides = document.querySelectorAll('.before-slide');
+        
+        function slideBefore(direction) {
+            if (direction === 'next' && beforeCurrentSlide < beforeSlides.length - 1) {
+                beforeCurrentSlide = beforeCurrentSlide + 1;
+            } else if (direction === 'prev' && beforeCurrentSlide > 0) {
+                beforeCurrentSlide = beforeCurrentSlide - 1;
+            }
+            
+            const slideWidth = beforeSlides[0].offsetWidth + 32; // 32px for gap
+            // Add 16px offset for all slides except the first one to maintain consistent left margin
+            const offset = beforeCurrentSlide === 0 ? 0 : 16;
+            beforeTrack.style.transform = `translateX(-${(beforeCurrentSlide * slideWidth) + offset}px)`;
+            
+            // Update button states
+            updateBeforeButtonStates();
+        }
+        
+        function updateBeforeButtonStates() {
+            const prevBtn = document.querySelector('.before-slider .carousel-prev');
+            const nextBtn = document.querySelector('.before-slider .carousel-next');
+            
+            if (prevBtn && nextBtn) {
+                prevBtn.disabled = beforeCurrentSlide === 0;
+                nextBtn.disabled = beforeCurrentSlide === beforeSlides.length - 1;
+                
+                // Add visual styling for disabled state
+                prevBtn.style.opacity = beforeCurrentSlide === 0 ? '0.5' : '1';
+                nextBtn.style.opacity = beforeCurrentSlide === beforeSlides.length - 1 ? '0.5' : '1';
+                prevBtn.style.cursor = beforeCurrentSlide === 0 ? 'not-allowed' : 'pointer';
+                nextBtn.style.cursor = beforeCurrentSlide === beforeSlides.length - 1 ? 'not-allowed' : 'pointer';
+            }
+        }
+        
+        // After slider functionality
+        let afterCurrentSlide = 0;
+        const afterTrack = document.getElementById('afterTrack');
+        const afterSlides = document.querySelectorAll('.after-slide');
+        
+        function slideAfter(direction) {
+            if (direction === 'next' && afterCurrentSlide < afterSlides.length - 1) {
+                afterCurrentSlide = afterCurrentSlide + 1;
+            } else if (direction === 'prev' && afterCurrentSlide > 0) {
+                afterCurrentSlide = afterCurrentSlide - 1;
+            }
+            
+            const slideWidth = afterSlides[0].offsetWidth + 32; // 32px for gap
+            // Add 16px offset for all slides except the first one to maintain consistent left margin
+            const offset = afterCurrentSlide === 0 ? 0 : 16;
+            afterTrack.style.transform = `translateX(-${(afterCurrentSlide * slideWidth) + offset}px)`;
+            
+            // Update button states
+            updateAfterButtonStates();
+        }
+        
+        function updateAfterButtonStates() {
+            const prevBtn = document.querySelector('.after-slider .carousel-prev');
+            const nextBtn = document.querySelector('.after-slider .carousel-next');
+            
+            if (prevBtn && nextBtn) {
+                prevBtn.disabled = afterCurrentSlide === 0;
+                nextBtn.disabled = afterCurrentSlide === afterSlides.length - 1;
+                
+                // Add visual styling for disabled state
+                prevBtn.style.opacity = afterCurrentSlide === 0 ? '0.5' : '1';
+                nextBtn.style.opacity = afterCurrentSlide === afterSlides.length - 1 ? '0.5' : '1';
+                prevBtn.style.cursor = afterCurrentSlide === 0 ? 'not-allowed' : 'pointer';
+                nextBtn.style.cursor = afterCurrentSlide === afterSlides.length - 1 ? 'not-allowed' : 'pointer';
+            }
+        }
+
+        // Image Modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.querySelector('.close-modal');
+            
+            // Add click event to all images to open modal
+            const allImages = document.querySelectorAll('img');
+            allImages.forEach(img => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function() {
+                    modal.style.display = 'block';
+                    modalImg.src = this.src;
+                    modalImg.alt = this.alt;
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                });
+            });
+            
+            // Close modal when clicking the close button
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            });
+            
+            // Close modal when clicking outside the image
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                }
+            });
+            
+                    // Initialize button states for both sliders
+        updateBeforeButtonStates();
+        updateAfterButtonStates();
+        
+        // Force remove hover effects from meta-labels
+        function forceRemoveHoverEffects() {
+            const metaLabels = document.querySelectorAll('.meta-label');
+            metaLabels.forEach(label => {
+                label.style.setProperty('background-color', '#f0f4f7', 'important');
+                label.style.setProperty('background', '#f0f4f7', 'important');
+                label.style.setProperty('color', '#1C5A73', 'important');
+            });
+        }
+        
+        // Run immediately and set up continuous monitoring
+        forceRemoveHoverEffects();
+        setInterval(forceRemoveHoverEffects, 100); // Check every 100ms
+    });
+
+        // Custom navigation functionality for all sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.case-study-nav .nav-item');
+            
+            // Remove any existing event listeners to prevent conflicts
+            navItems.forEach(navItem => {
+                const newNavItem = navItem.cloneNode(true);
+                navItem.parentNode.replaceChild(newNavItem, navItem);
+            });
+            
+            // Get fresh references after replacing
+            const freshNavItems = document.querySelectorAll('.case-study-nav .nav-item');
+            
+            // Set initial active state styling for Project Overview
+            const projectOverviewItem = document.querySelector('[data-target="project-overview-main"]');
+            if (projectOverviewItem) {
+                projectOverviewItem.style.color = '#1C5A73';
+                projectOverviewItem.style.fontWeight = '600';
+                projectOverviewItem.style.background = '#f0f4f7';
+                projectOverviewItem.style.borderLeft = '3px solid #1C5A73';
+                projectOverviewItem.style.marginLeft = '4px';
+                projectOverviewItem.style.marginRight = '4px';
+            }
+            
+            freshNavItems.forEach(navItem => {
+                navItem.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const targetId = this.getAttribute('data-target');
+                    let targetSection;
+                    
+                    if (targetId === 'project-overview-main') {
+                        // Special handling for Project Overview - go to main Project Overview section
+                        targetSection = document.getElementById('project-overview-main');
+                        if (targetSection) {
+                            // Account for menu height overlap
+                            const offset = 80;
+                            const targetPosition = targetSection.offsetTop - offset;
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    } else {
+                        // Handle other sections - go to UX Flows Walkthrough headings
+                        targetSection = document.getElementById(targetId);
+                        if (targetSection) {
+                            // Use getBoundingClientRect for more accurate positioning
+                            const rect = targetSection.getBoundingClientRect();
+                            const currentScroll = window.pageYOffset;
+                            const targetPosition = currentScroll + rect.top - 80; // 80px offset for menu
+                            
+                            console.log('Scrolling to:', targetId);
+                            console.log('Target section offsetTop:', targetSection.offsetTop);
+                            console.log('Current scroll position:', currentScroll);
+                            console.log('Target section rect top:', rect.top);
+                            console.log('Calculated position:', targetPosition);
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        } else {
+                            console.log('Target section not found:', targetId);
+                        }
+                    }
+                    
+                    // Update active state - ensure the clicked item gets the active class
+                    freshNavItems.forEach(item => {
+                        item.classList.remove('active');
+                        // Remove active styling from all items
+                        item.style.color = '#666';
+                        item.style.fontWeight = '500';
+                        item.style.background = 'transparent';
+                        item.style.borderLeft = 'none';
+                        item.style.marginLeft = '0';
+                        item.style.marginRight = '0';
+                    });
+                    
+                    // Add active styling to clicked item
+                    this.classList.add('active');
+                    this.style.color = '#1C5A73';
+                    this.style.fontWeight = '600';
+                    this.style.background = '#f0f4f7';
+                    this.style.borderLeft = '3px solid #1C5A73';
+                    this.style.marginLeft = '4px';
+                    this.style.marginRight = '4px';
+                    
+                    // Debug: log which item was clicked and which got active class
+                    console.log('Clicked:', targetId, 'Active item:', this.textContent);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

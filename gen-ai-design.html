@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gen AI Design - Afeeza Designs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Change hero title decorative dash color from red to #197685 */
+        .hero-title::after { background: #197685 !important; }
+        /* Make metrics section full-width on this page */
+        .metrics-summary .container { max-width: none; padding: 0; margin: 0; }
+        .metrics-grid {
+            max-width: none;
+            width: 100%;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+        .metrics-track {
+            display: flex;
+            gap: 1.5rem;
+            will-change: transform;
+            transform: translateX(0);
+        }
+        .metrics-track .metric-item {
+            flex: 0 0 auto;
+        }
+        .metrics-track .metric-number {
+            color: #1a1a1a !important;
+            font-weight: 800 !important;
+        }
+        .metrics-track .metric-content {
+            color: #197685 !important;
+            font-weight: 700 !important;
+        }
+        
+        /* Project Overview heading with blue underline */
+        #project-overview h2::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -8px !important;
+            left: 0 !important;
+            width: 80px !important;
+            height: 5px !important;
+            background: #197685 !important;
+            border-radius: 3px !important;
+            z-index: 10 !important;
+        }
+        
+        /* All project overview h2 headings with blue underline */
+        .project-overview h2::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -8px !important;
+            left: 0 !important;
+            width: 80px !important;
+            height: 5px !important;
+            background: #197685 !important;
+            border-radius: 3px !important;
+            z-index: 10 !important;
+        }
+        
+        /* Related projects h2 heading with blue underline */
+        .related-projects h2::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -8px !important;
+            left: 0 !important;
+            width: 80px !important;
+            height: 5px !important;
+            background: #197685 !important;
+            border-radius: 3px !important;
+            z-index: 10 !important;
+        }
+
+        /* Remove decorative line from related projects heading */
+        .related-projects h2::after {
+            display: none !important;
+        }
+
+        /* Override nav-logo hover to remove color change, keep only lift effect */
+        .nav-logo:hover {
+            color: inherit !important;
+            transform: translateY(-1px);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html#home" class="nav-logo">
+            <img src="Images/Afeeza Logo.png" alt="Afeeza Logo" style="height: 24px; width: auto; margin: 0 4px 0 0; display: block;">
+            <span>Afeeza Ali</span>
+        </a>
+        
+        <div class="nav-menu-toggle">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
+            <div class="project-hero-content">
+                <div class="hero-layout">
+                    <div class="hero-left">
+                        <a href="index.html" class="back-button" style="color: #000000; margin-bottom: 1rem;">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Portfolio
+                        </a>
+                        <h1 class="hero-title">Gen AI<br>Design</h1>
+                        <div style="background: rgba(25, 118, 133, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid #197685; margin-bottom: 1.5rem;">
+                            <p class="hero-subtitle" style="margin: 0; color: #197685; font-weight: 500;">Led research and design for a SaaS AI assistant that helps users quickly uncover insights and take action through natural, guided conversations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-right" style="padding: 0; margin: 0; position: relative; right: -20px;">
+                        <div class="project-hero-image" style="background: none; box-shadow: none; width: calc(100% + 20px); margin: 0; border-radius: 0; min-height: 530px; display: flex; align-items: center; justify-content: center;">
+                            <img src="Images/Copilot.gif" alt="Copilot AI Assistant Interface" style="border-radius: 20px; width: 100%; height: 100%; max-width: 100%; object-fit: cover; object-position: right center; border: 24px solid #197685;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Summary -->
+    <section class="metrics-summary">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metrics-track" id="metricsTrack">
+                    <div class="metric-item">
+                        <div class="metric-number">60%</div>
+                        <div class="metric-content">improvement in perceived response speed</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">40%</div>
+                        <div class="metric-content">faster decision making</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">3x</div>
+                        <div class="metric-content">improvement in user task success rate compared to the legacy experience</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">100%</div>
+                        <div class="metric-content">test participants reported greater clarity and confidence when using guided prompts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <section id="project-overview-main" class="project-content-wrapper">
+        <div class="project-content-full">
+        <div class="project-content-main">
+            <div class="project-overview">
+                <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px;">Project Overview</h2>
+                
+                <p>Apromore is an enterprise process mining platform that enables analysts to visualize, analyze, and optimize business processes using real operational data.</p>
+                
+                <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #197685; margin: 1.5rem 0 0.8rem;">The Problem</h3>
+                <p>Apromore is an enterprise process mining platform that enables analysts to visualize, analyze, and optimize business processes using real operational data.</p>
+                
+                <p>While the platform already empowered users to explore complex models and uncover inefficiencies, doing so still required significant time, technical expertise, and domain knowledge.</p>
+                
+                <p>As generative AI became more accessible, the business saw an opportunity to augment analyst workflows with a smart assistant, one that could answer questions like:</p>
+                <ul>
+                    <li><em style="background-color: #f8f9fa; padding: 8px 12px; border-radius: 6px; display: inline-block; border-left: 4px solid #197685; color: #197685;">"Why is this step taking so long?"</em></li>
+                    <li><em style="background-color: #f8f9fa; padding: 8px 12px; border-radius: 6px; display: inline-block; border-left: 4px solid #197685; color: #197685;">"How can I improve this process?"</em></li>
+                </ul>
+                
+                <p>This led to the need of an AI chatbot called Apromore AI.</p>
+                
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                
+
+            </div>
+
+            <div class="project-overview">
+                <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px;">The Scope & The Squad</h2>
+                <p>The problem wasn't just poor UX. Many user frustrations were rooted in the limitations of the Gen AI infrastructure itself. This meant we had to design the UX in a way that worked with those constraints, not against them.</p>
+                
+                <ul>
+                    <li><strong>High User Expectations</strong> – Users expected ChatGPT-like responsiveness and contextuality.</li>
+                    <li><strong>LLM Infrastructure Constraints</strong> – The backend lacked streaming and had long response latency (~30s).</li>
+                    <li><strong>Accuracy Limitations</strong> – AI responses were only accurate ~30% of the time, mostly for repeated queries.</li>
+                    <li><strong>Tight Release Timeline</strong> – The project was roadmap-locked, with limited room for backend changes.</li>
+                </ul>
+                
+                <p>This project was a close collaboration between product, design, and AI engineering. I contributed as the Lead Product Designer in the product trio, reporting to the Head of Product Design. I collaborated closely with the Product Manager and Lead AI Engineer to shape the user experience within real technical constraints. Together, we took a lean, cross-functional approach consitituting 4 sprints. Our shared focus on feasibility and user value helped bring Copilot to life on schedule.</p>
+                
+                <img src="Images/AI_Team.png" alt="Gen AI Design Team" style="width: 100%; height: 200px; object-fit: contain; border-radius: 15px; margin: 0;">
+            </div>
+
+            <div class="project-overview">
+                <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px;">The Design Sprint</h2>
+                <p>The project involved designing an intuitive, conversational AI interface within the architectural limitations. We followed an approach to translate backend constraints into opportunities for UX innovation.</p>
+                
+                <div class="design-sprint-grid">
+                    <div class="sprint-heading" style="color: #197685 !important; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #197685;">1. User Research & Workflow Mapping</div>
+                    <div class="sprint-content">
+                        <div class="sprint-badge">Discovery</div>
+                        Through relationship managers, we uncovered key friction points—especially around interpreting complex models. Users wanted help that was fast, contextual, and trustworthy.
+                    </div>
+                    
+                    <div class="sprint-heading" style="color: #197685 !important; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #197685;">2. LLM Test Result Analysis</div>
+                    <div class="sprint-content">
+                        <div class="sprint-badge">Data to Inform Strategy</div>
+                        Early testing revealed only 3 out of 10 user queries returned high-quality answers. However, upon investigating LLM validation results, we discovered that these successful answers aligned with a repeated subset of business questions. This insight helped us pivot Copilot's design toward structured guidance rather than open-ended conversation.
+                    </div>
+                    
+                    <div class="sprint-heading" style="color: #197685 !important; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #197685;">3. Constraint-Driven Design Strategy</div>
+                    <div class="sprint-content">
+                        <div class="sprint-badge">Masking Tech Limitations with UX</div>
+                        To work around the technical limitations, we led the creation of a UX strategy that focused on front-end improvements and minimal backend interventions:<br><br>
+                        • Manual Context Selection – Users could select a category or define a context scope before submitting a query, improving precision.<br>
+                        • Guided Prompt Templates – We introduced structured query options to steer users toward high-confidence answers.<br>
+                        • Fallback Patterns & Feedback Loops – Designed graceful error states with helpful messaging and built-in feedback capture.<br><br>
+                        This approach significantly reduced dependency on generative complexity, allowing us to ship usable, intuitive flows on time.
+                    </div>
+                    
+                    <div class="sprint-heading" style="color: #197685 !important; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #197685;">4. Early Usability Testing</div>
+                    <div class="sprint-content">
+                        <div class="sprint-badge">Fast Feedback Loops</div>
+                        We conducted early usability tests with clients using interactive prototypes to validate flow clarity, terminology, and perceived intelligence of Copilot.
+                    </div>
+                    
+                    <div class="sprint-heading" style="color: #197685 !important; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #197685;">5. Customer Response & Handoff to Development</div>
+                    <div class="sprint-content">
+                        <div class="sprint-badge">Implement with Confidence</div>
+                        The prototype received strong positive feedback during testing. Users appreciated the streamlined interface and found that the guided prompts made it easier to ask the right questions and get meaningful answers quickly. This validation gave stakeholders confidence in the solution, and the design was approved for implementation. The prototype was handed off to engineering and moved into development on schedule.
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-overview">
+                <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px;">The Outcome</h2>
+                <p>Copilot launched in 2025 as a core part of Apromore's product strategy, positioning the platform at the forefront of AI-powered process improvement.</p>
+                
+                <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #197685; margin: 1.5rem 0 0.8rem;">Key Results</h3>
+                <ul>
+                    <li><strong>Prototype UX fully approved</strong> after user testing for development and delivered on time</li>
+                    <li><strong>Increased task completion rate</strong> and reduced query retries in test sessions</li>
+                    <li><strong>Guided prompts led to reduction</strong> in LLM load</li>
+                    <li><strong>Positive user feedback</strong> calling it "an elegant solution to a frustrating problem"</li>
+                </ul>
+                
+                <div style="width: 100%; margin: 2rem 0;">
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 2rem;">
+                        <div style="text-align: center; padding: 20px; background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 15px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.background='#ffffff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='#f8f9fa'">
+                            <div style="font-size: 3rem; font-weight: bold; color: #333; margin-bottom: 10px;">60%</div>
+                            <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">improvement in perceived response speed</div>
+                        </div>
+                        <div style="text-align: center; padding: 20px; background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 15px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.background='#ffffff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='#f8f9fa'">
+                            <div style="font-size: 3rem; font-weight: bold; color: #333; margin-bottom: 10px;">40%</div>
+                            <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">faster decision making</div>
+                        </div>
+                        <div style="text-align: center; padding: 20px; background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 15px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.background='#ffffff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='#f8f9fa'">
+                            <div style="font-size: 3rem; font-weight: bold; color: #333; margin-bottom: 10px;">3x</div>
+                            <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">improvement in user task success rate compared to the legacy experience</div>
+                        </div>
+                        <div style="text-align: center; padding: 20px; background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 15px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.background='#ffffff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='#f8f9fa'">
+                            <div style="font-size: 3rem; font-weight: bold; color: #333; margin-bottom: 10px;">100%</div>
+                            <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">test participants reported greater clarity and confidence when using guided prompts</div>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+
+
+
+                            <div class="project-image" style="position: relative; z-index: 1; padding-top: 10px; margin-top: 10px; margin-left: 0; margin-right: auto; background: none; height: auto;">
+                    <iframe 
+                        width="100%" 
+                        height="500" 
+                        src="https://www.youtube.com/embed/GjsFj4aD-uk" 
+                        title="Gen AI Design Video" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        style="border-radius: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                    </iframe>
+                </div>
+        </div>
+
+        <div class="project-content-sidebar">
+            <div class="sidebar-heading" style="background-color: #197685; color: white; padding: 1.5rem 1rem; position: sticky; top: -2rem; margin: -5rem -2rem 0 -2rem; text-align: center; font-size: 1rem; font-weight: 500; letter-spacing: 0.5px; z-index: 10; display: flex; align-items: center; justify-content: center;">
+                PROJECT OVERVIEW
+            </div>
+            <div class="sidebar-meta" style="padding-top: 5rem;">
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #197685; padding-left: 8px;">Company</span>
+                    <span class="meta-value">Apromore</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #197685; padding-left: 8px;">Project Category</span>
+                    <span class="meta-value">Enterprise SaaS – Gen AI</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #197685; padding-left: 8px;">Role</span>
+                    <span class="meta-value">Lead Product Designer</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #197685; padding-left: 8px;">Tech Stack</span>
+                    <span class="meta-value">• Figma<br>• Jira<br>• Confluence<br>• Gen AI tools<br>• HTML & CSS</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #197685; padding-left: 8px;">Deliverables</span>
+                    <span class="meta-value">• AI Interface Designs<br>• Prompt Engineering UI<br>• Content Generation Flows<br>• Figma Component Library<br>• Interactive Prototype<br>• Jira Tickets for Devs</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #197685; padding-left: 8px;">Date</span>
+                    <span class="meta-value">Q4 2024</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
+
+
+
+    <!-- You Might Be Interested In Section -->
+    <section class="related-projects">
+        <div class="related-projects-container">
+            <h2>You might be interested in:</h2>
+            <div class="related-projects-grid" style="display: grid; grid-template-columns: repeat(5, 250px); gap: 2rem; margin: 24px auto; justify-content: center;">
+                <a href="dashboard-design-studio.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Dashbaord.png" alt="Dashboard Design Studio" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">Dashboard Design Studio</h3>
+                    <p style="width: 100%; margin: 0;">SaaS Data Dashboard</p>
+                </a>
+
+                <a href="design-system.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Design System.jpg" alt="Design System" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">Design System</h3>
+                    <p style="width: 100%; margin: 0;">SaaS design library</p>
+                </a>
+
+                <a href="deets-app-case-study.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Deets.jpg" alt="Deets App" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">Deets App</h3>
+                    <p style="width: 100%; margin: 0;">Mobile App MVP</p>
+                </a>
+
+                <a href="deepslice-pizza.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Deepslice.png" alt="DeepSlice Pizza" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">DeepSlice Pizza</h3>
+                    <p style="width: 100%; margin: 0;">Food Web and Mobile App</p>
+                </a>
+
+                <a href="gen-ai-design.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Gen AI.png" alt="Gen AI Design" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">Gen AI Design</h3>
+                    <p style="width: 100%; margin: 0;">Enterprise SaaS – Gen AI</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+                    <a href="index.html#home" class="footer-link">Home</a>
+                    <a href="index.html#about" class="footer-link">About</a>
+                    <a href="index.html#projects" class="footer-link">Projects</a>
+                    <a href="index.html#testimonials" class="footer-link">Testimonials</a>
+                </div>
+                
+                <div class="footer-cta-container">
+                    <div class="footer-cta-box">
+                        <div class="footer-cta-content">
+                            <div class="footer-cta-left">
+                                <h2 class="footer-title">Have a project in mind? Let's chat!</h2>
+                                <div class="footer-email">
+                                    <i class="fas fa-envelope"></i>
+                                    <a href="mailto:afeeza1.aa@gmail.com">afeeza1.aa@gmail.com</a>
+                                </div>
+                            </div>
+                            <a href="mailto:afeeza1.aa@gmail.com" class="footer-contact-btn">
+                                Contact me
+                                <i class="fas fa-paper-plane"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <span class="footer-social-text">Follow my work on:</span>
+                    <div class="social-links">
+                        <a href="https://medium.com" target="_blank" class="social-link">
+                            <i class="fab fa-medium"></i>
+                        </a>
+                        <a href="https://scholar.google.com" target="_blank" class="social-link">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    (function() {
+        const viewport = document.querySelector('.metrics-grid');
+        const track = document.getElementById('metricsTrack');
+        if (!viewport || !track) return;
+
+        // Clone children for seamless loop
+        const items = Array.from(track.children);
+        const clone = document.createDocumentFragment();
+        items.forEach(node => clone.appendChild(node.cloneNode(true)));
+        track.appendChild(clone);
+
+        let x = 0;
+        let trackHalfWidth = 0;
+
+        function layout() {
+            const gap = 24; // 1.5rem
+            const viewportWidth = viewport.clientWidth;
+            const tileWidth = (viewportWidth - gap * (4 - 1)) / 4;
+            Array.from(track.children).forEach((el) => {
+                el.style.width = tileWidth + 'px';
+            });
+            // compute half width (original set)
+            trackHalfWidth = items.length * tileWidth + (items.length - 1) * gap;
+        }
+
+        function animate() {
+            x -= 0.5; // speed
+            if (x <= -trackHalfWidth) x = 0;
+            track.style.transform = 'translateX(' + x + 'px)';
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', layout);
+        layout();
+        requestAnimationFrame(animate);
+    })();
+    </script>
+</body>
+</html> 

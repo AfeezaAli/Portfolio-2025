@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System - Afeeza Designs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <style>
+        /* Ensure hero underline dash is blue */
+        .hero-title::after { background: #1C5A73 !important; }
+        
+        /* Metrics styling to match hero title */
+        .metrics-grid .metric-number {
+            color: #1a1a1a !important;
+            font-weight: 800 !important;
+        }
+        .metrics-grid .metric-content {
+            color: #1C5A73 !important;
+            font-weight: 700 !important;
+        }
+        
+        /* Metrics loop functionality */
+        .metrics-grid {
+            max-width: none;
+            width: 100%;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+        .metrics-track {
+            display: flex;
+            gap: 1.5rem;
+            will-change: transform;
+            transform: translateX(0);
+        }
+        .metrics-track .metric-item {
+            flex: 0 0 auto;
+        }
+        
+        /* Project Overview heading - decorative underline removed */
+        #project-overview h2::after {
+            content: none !important;
+        }
+        
+        /* All project overview h2 headings - decorative underline removed */
+        .project-overview h2::after {
+            content: none !important;
+        }
+        
+        /* Related projects h2 heading - decorative underline removed */
+        .related-projects h2::after {
+            content: none !important;
+        }
+
+        /* Project Overview heading with blue underline */
+        #project-overview h2::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -8px !important;
+            left: 0 !important;
+            width: 80px !important;
+            height: 5px !important;
+            background: #197685 !important;
+            border-radius: 3px !important;
+            z-index: 10 !important;
+        }
+        
+        /* All project overview h2 headings with blue underline */
+        .project-overview h2::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -8px !important;
+            left: 0 !important;
+            width: 80px !important;
+            height: 5px !important;
+            background: #197685 !important;
+            border-radius: 3px !important;
+            z-index: 10 !important;
+        }
+        
+        /* Related projects h2 heading with blue underline */
+        .related-projects h2::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -8px !important;
+            left: 0 !important;
+            width: 80px !important;
+            height: 5px !important;
+            background: #197685 !important;
+            border-radius: 3px !important;
+            z-index: 10 !important;
+        }
+
+        /* Remove decorative line from related projects heading */
+        .related-projects h2::after {
+            display: none !important;
+        }
+
+        /* Override nav-logo hover to remove color change, keep only lift effect */
+        .nav-logo:hover {
+            color: inherit !important;
+            transform: translateY(-1px);
+        }
+
+    </style>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html#home" class="nav-logo">
+            <div class="logo-icon"></div>
+            <span>Afeeza Ali</span>
+        </a>
+        
+        <div class="nav-menu-toggle">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
+            <div class="project-hero-content">
+                <div class="hero-layout">
+                    <div class="hero-left">
+                        <a href="index.html" class="back-button" style="color: #000000; margin-bottom: 1rem;">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Portfolio
+                        </a>
+                        <h1 class="hero-title">Design<br>System</h1>
+                        <div style="background: rgba(28, 90, 115, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid #1C5A73; margin-bottom: 1.5rem;">
+                            <p class="hero-subtitle" style="margin: 0; color: #1C5A73; font-weight: 500;">Development of a modular design system to unify and streamline UX across the product ecosystem.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-right" style="padding: 0; margin: 0; position: relative; right: -20px;">
+                        <div class="project-hero-image" style="background: none; box-shadow: none; width: calc(100% + 20px); margin: 0; border-radius: 0; min-height: 530px; display: flex; align-items: center; justify-content: center;">
+                            <img src="Images/DS_Cover.jpg" alt="Design System Cover" style="border-radius: 20px; width: 100%; height: 100%; max-width: 100%; object-fit: cover; object-position: 20% center;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Summary -->
+    <section class="metrics-summary">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metrics-track" id="metricsTrack">
+                    <div class="metric-item">
+                        <div class="metric-number">40%</div>
+                        <div class="metric-content">faster design-to-development handoff due to ready-to-use components and clear documentation</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">100%</div>
+                        <div class="metric-content">adoption by design, product and dev teams within the first month of rollout</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">100+</div>
+                        <div class="metric-content">components created with all interactive state and responsive rules for resusability</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">1x</div>
+                        <div class="metric-content">comprehensive component usage framework with visual examples, dos and don'ts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <section id="project-overview-main" class="project-content-wrapper">
+        <div class="project-content-full">
+        <div class="project-content-main">
+            <div class="project-overview">
+                <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px;">Project Overview</h2>
+                
+                <p>After years of rapid growth, the product's user experience became fragmented. Inconsistent UI patterns and design decisions had accumulated, creating UX debt that slowed both design velocity and development cycles.</p>
+                
+                <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #197685; margin: 1.5rem 0 0.8rem;">The Opportunity</h3>
+                <p>After years of rapid growth, the product's user experience became fragmented. Inconsistent UI patterns and design decisions had accumulated, creating UX debt that slowed both design velocity and development cycles.</p>
+                
+                <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #197685; margin: 1.5rem 0 0.8rem;">Key Challenges</h3>
+                <ul>
+                    <li><strong>Inconsistent UI</strong> – Years of ad-hoc design without a system led to mismatched components and visual inconsistencies.</li>
+                    <li><strong>Poor Scalability</strong> – The existing design couldn't support the pace of new feature development.</li>
+                    <li><strong>Cross-Team Misalignment</strong> – Designers and developers struggled to stay aligned due to unclear specs and lack of standardized components.</li>
+                    <li><strong>Slow Development Cycles</strong> – Low reusability and high redesign, causing delays in both design and engineering handoff.</li>
+                </ul>
+                
+
+            </div>
+
+            <div class="project-overview">
+                <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px;">The Team</h2>
+                <p>We operated as a cross-functional taskforce focused on establishing governance for the design foundation.</p>
+                
+                <div class="project-image-placeholder" style="width: 100%; margin: 0; background: none; box-shadow: none;">
+                    <img src="Images/DSTeam.png" alt="Design System Team" style="width: 100%; max-width: 900px; height: auto; object-fit: contain; border-radius: 15px; margin: 0;">
+                </div>
+            </div>
+
+            <div class="project-overview">
+                <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px;">The Process</h2>
+                <p>We adopted the atomic design approach to bring order and clarity to a fragmented UI landscape. Through structured audits, workshops, and detailed documentation, we built a scalable foundation for consistent design.</p>
+                
+                <div class="design-sprint-grid">
+                    <div class="sprint-heading" style="color: #197685 !important; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #197685;">1. Component Inventory & UX Audit</div>
+                    <div class="sprint-content">
+                        <div class="sprint-badge">Discovery</div>
+                        We conducted a thorough audit of existing UI components across different projects, identifying inconsistencies and redundancies. This helped us create a comprehensive list of essential components.
+                    </div>
+                    
+                    <div class="sprint-heading" style="color: #197685 !important; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #197685;">2. Internal Workshops</div>
+                    <div class="sprint-content">
+                        <div class="sprint-badge">Collaboration</div>
+                        Collaborative workshops with product, design, and dev ensured every component met both UX and implementation needs. We aligned on tokens, naming conventions, and usage.
+                    </div>
+                    
+                    <div class="sprint-heading" style="color: #197685 !important; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #197685;">3. Standardized Figma Library</div>
+                    <div class="sprint-content">
+                        <div class="sprint-badge">Implementation</div>
+                        We established a well-organized Figma library with clear naming conventions, variants, and auto-layout structures, making it easy for designers to build interfaces quickly and consistently.
+                    </div>
+                    
+                    <div class="sprint-heading" style="color: #197685 !important; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #197685;">4. Iterative Testing & Feedback</div>
+                    <div class="sprint-content">
+                        <div class="sprint-badge">Validation</div>
+                        The design system was continuously refined through testing, usability reviews, and feedback to ensure practical usability and adoption.
+                    </div>
+                    
+                    <div class="sprint-heading" style="color: #197685 !important; background: #f0f4f7; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #197685;">5. Documentation & Governance</div>
+                    <div class="sprint-content">
+                        <div class="sprint-badge">Sustainability</div>
+                        Built clear usage guidelines, component anatomy, and interaction rules to enable adoption and minimize misuse.
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-overview">
+                <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px;">The Outcome</h2>
+                <p>The new system served as the single source of truth, eliminating inconsistencies and visual clutter across the product. It brought structure and clarity, allowing designers and developers to move faster with confidence. The modular setup offered flexibility to scale with new features while preserving consistency and quality.</p>
+                
+                <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #197685; margin: 1.5rem 0 0.8rem;">Key Results</h3>
+                <ul>
+                    <li><strong>A shared library improved visual consistency</strong> across screens and platforms</li>
+                    <li><strong>Design and dev cycles were faster</strong> with reusable, tested components</li>
+                    <li><strong>The system is extensible</strong>, supporting new modules and features without design regression</li>
+                    <li><strong>A documented framework and version control</strong> ensured sustainable design practices and reduced future debt</li>
+                </ul>
+                
+
+            </div>
+
+            <div style="width: 100%; margin: 2rem 0;">
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 2rem;">
+                    <div style="text-align: center; padding: 20px; background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 15px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.background='#ffffff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='#f8f9fa'">
+                        <div style="font-size: 3rem; font-weight: bold; color: #333; margin-bottom: 10px;">40%</div>
+                        <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">faster design-to-development handoff due to ready-to-use components and clear documentation</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 15px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.background='#ffffff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='#f8f9fa'">
+                        <div style="font-size: 3rem; font-weight: bold; color: #333; margin-bottom: 10px;">100%</div>
+                        <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">adoption by design, product and dev teams within the first month of rollout</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 15px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.background='#ffffff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='#f8f9fa'">
+                        <div style="font-size: 3rem; font-weight: bold; color: #333; margin-bottom: 10px;">100+</div>
+                        <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">components created with all interactive state and responsive rules for resusability</div>
+                    </div>
+                    <div style="text-align: center; padding: 20px; background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 15px; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)'; this.style.background='#ffffff'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.background='#f8f9fa'">
+                        <div style="font-size: 3rem; font-weight: bold; color: #333; margin-bottom: 10px;">1x</div>
+                        <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">comprehensive component usage framework with visual examples, dos and don'ts</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="width: 100%; margin: 2rem 0;">
+                <div style="display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start;">
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div style="width: 280px; height: auto; display: flex; align-items: flex-start; justify-content: center;">
+                            <img src="Images/DSGallery2.png" alt="Design System Component Library" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px; transition: transform 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                        </div>
+                        <div style="width: 280px; height: auto; display: flex; align-items: flex-start; justify-content: center;">
+                            <img src="Images/DSGallery3.png" alt="Design System Documentation" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px; transition: transform 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: flex-start; justify-content: center; height: auto;">
+                        <img src="Images/DSGallery1.png" alt="Design System Implementation" style="width: 120%; height: 460px; object-fit: fill; border-radius: 15px; transition: transform 0.2s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-content-sidebar">
+            <div class="sidebar-heading" style="background-color: #197685; color: white; padding: 1.5rem 1rem; position: sticky; top: -2rem; margin: -5rem -2rem 0 -2rem; text-align: center; font-size: 1rem; font-weight: 500; letter-spacing: 0.5px; z-index: 10; display: flex; align-items: center; justify-content: center;">
+                PROJECT OVERVIEW
+            </div>
+            <div class="sidebar-meta" style="padding-top: 5rem;">
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #197685; padding-left: 8px;">Company</span>
+                    <span class="meta-value">Apromore</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #197685; padding-left: 8px;">Project Category</span>
+                    <span class="meta-value">Enterprise SaaS Design System</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #197685; padding-left: 8px;">Role</span>
+                    <span class="meta-value">Lead Product Designer</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #197685; padding-left: 8px;">Tech Stack</span>
+                    <span class="meta-value">• Figma<br>• Figjam<br>• Storybook<br>• Confluence<br>• HTML & CSS</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #197685; padding-left: 8px;">Deliverables</span>
+                    <span class="meta-value">• Design System Library (Figma)<br>• Usage Documentation<br>• UI Audit Reports<br>• Dev/QA Support</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label" style="border-left: 3px solid #197685; padding-left: 8px;">Date</span>
+                    <span class="meta-value">Q3 2024</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
+
+    <!-- You Might Be Interested In Section -->
+    <section class="related-projects">
+        <div class="related-projects-container">
+            <h2>You might be interested in:</h2>
+            <div class="related-projects-grid" style="display: grid; grid-template-columns: repeat(5, 250px); gap: 2rem; margin: 24px auto; justify-content: center;">
+                <a href="dashboard-design-studio.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Dashbaord.png" alt="Dashboard Design Studio" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">Dashboard Design Studio</h3>
+                    <p style="width: 100%; margin: 0;">SaaS Data Dashboard</p>
+                </a>
+
+                <a href="design-system.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Design System.jpg" alt="Design System" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">Design System</h3>
+                    <p style="width: 100%; margin: 0;">SaaS design library</p>
+                </a>
+
+                <a href="deets-app-case-study.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Deets.jpg" alt="Deets App" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">Deets App</h3>
+                    <p style="width: 100%; margin: 0;">Mobile App MVP</p>
+                </a>
+
+                <a href="deepslice-pizza.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Deepslice.png" alt="DeepSlice Pizza" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">DeepSlice Pizza</h3>
+                    <p style="width: 100%; margin: 0;">Food Web and Mobile App</p>
+                </a>
+
+                <a href="gen-ai-design.html" class="related-project-card" style="min-width: 250px; text-decoration: none; color: inherit; display: block;">
+                    <img src="Images/Gen AI.png" alt="Gen AI Design" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin: 0; display: block;">
+                    <h3 style="width: 100%; margin: 16px 0 0 0;">Gen AI Design</h3>
+                    <p style="width: 100%; margin: 0;">Enterprise SaaS – Gen AI</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-nav">
+                    <a href="index.html#home" class="footer-link">Home</a>
+                    <a href="index.html#about" class="footer-link">About</a>
+                    <a href="index.html#projects" class="footer-link">Projects</a>
+                    <a href="index.html#testimonials" class="footer-link">Testimonials</a>
+                </div>
+                
+                <div class="footer-cta-container">
+                    <div class="footer-cta-box">
+                        <div class="footer-cta-content">
+                            <div class="footer-cta-left">
+                                <h2 class="footer-title">Have a project in mind? Let's chat!</h2>
+                                <div class="footer-email">
+                                    <i class="fas fa-envelope"></i>
+                                    <a href="mailto:afeeza1.aa@gmail.com">afeeza1.aa@gmail.com</a>
+                                </div>
+                            </div>
+                            <a href="mailto:afeeza1.aa@gmail.com" class="footer-contact-btn">
+                                Contact me
+                                <i class="fas fa-paper-plane"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <span class="footer-social-text">Follow my work on:</span>
+                    <div class="social-links">
+                        <a href="https://medium.com" target="_blank" class="social-link">
+                            <i class="fab fa-medium"></i>
+                        </a>
+                        <a href="https://scholar.google.com" target="_blank" class="social-link">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    (function() {
+        const viewport = document.querySelector('.metrics-grid');
+        const track = document.getElementById('metricsTrack');
+        if (!viewport || !track) return;
+
+        // Clone children for seamless loop
+        const items = Array.from(track.children);
+        const clone = document.createDocumentFragment();
+        items.forEach(node => clone.appendChild(node.cloneNode(true)));
+        track.appendChild(clone);
+
+        let x = 0;
+        let trackHalfWidth = 0;
+
+        function layout() {
+            const gap = 24; // 1.5rem
+            const viewportWidth = viewport.clientWidth;
+            const tileWidth = (viewportWidth - gap * (4 - 1)) / 4;
+            Array.from(track.children).forEach((el) => {
+                el.style.width = tileWidth + 'px';
+            });
+            // compute half width (original set)
+            trackHalfWidth = items.length * tileWidth + (items.length - 1) * gap;
+        }
+
+        function animate() {
+            x -= 0.5; // speed
+            if (x <= -trackHalfWidth) x = 0;
+            track.style.transform = 'translateX(' + x + 'px)';
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', layout);
+        layout();
+        requestAnimationFrame(animate);
+    })();
+    </script>
+</body>
+</html> 
