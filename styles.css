@@ -26,6 +26,168 @@ body::before {
     z-index: 999;
 }
 
+/* Mobile Interim Message */
+.mobile-interim-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 10000;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.interim-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.interim-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.interim-emoji {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.interim-emoji .wave-emoji {
+    display: block;
+    animation: wave 1s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+.interim-emoji .wave-emoji:hover {
+    animation: none;
+    transform: scale(1.1) rotate(5deg);
+}
+
+.interim-hello {
+    color: #333;
+}
+
+.interim-name {
+    color: #333;
+}
+
+.interim-underline {
+    width: 80px;
+    height: 5px;
+    background: #ff6b35;
+    border-radius: 3px;
+    margin-bottom: 2rem;
+}
+
+.interim-message {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #666;
+    max-width: 400px;
+    font-weight: 400;
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+.interim-social {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.interim-social-text {
+    display: block;
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.interim-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.interim-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 50%;
+    color: #666;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.interim-social-link:hover {
+    background: #ff6b35;
+    color: white;
+    border-color: #ff6b35;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+/* Hide main site content on mobile */
+@media (max-width: 768px) {
+    .mobile-interim-message {
+        display: block;
+    }
+    
+    /* Hide all main content on mobile */
+    .navbar,
+    .hero,
+    .image-carousel-section,
+    .about-section,
+    .projects-section,
+    .testimonials-section,
+    .contact-section,
+    footer {
+        display: none !important;
+    }
+    
+    /* Prevent scrolling and hide body content */
+    body {
+        overflow: hidden !important;
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+    
+    /* Ensure interim message covers everything */
+    .mobile-interim-message {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: white;
+        z-index: 10000;
+        overflow: hidden;
+    }
+}
+
 /* Deepslice Pizza specific styling - Orange theme */
 .deepslice-pizza .project-hero-content::after {
     background: linear-gradient(90deg, #ff6b35, #f7931e);
