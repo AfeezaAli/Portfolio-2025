@@ -85,6 +85,13 @@
             color: inherit !important;
             transform: translateY(-1px);
         }
+        
+        /* Hide hero title underline on mobile */
+        @media (max-width: 768px) {
+            .hero-title::after {
+                display: none !important;
+            }
+        }
 
     </style>
 </head>
@@ -111,18 +118,18 @@
             <div class="project-hero-content">
                 <div class="hero-layout">
                     <div class="hero-left">
-                        <a href="index.html" class="back-button" style="color: #000000; margin-bottom: 1rem;">
+                        <a href="index.html" class="back-button">
                             <i class="fas fa-arrow-left"></i>
                             Back to Portfolio
                         </a>
-                        <h1 class="hero-title">Gen AI<br>Design</h1>
-                        <div style="background: rgba(25, 118, 133, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid #197685; margin-bottom: 1.5rem;">
+                        <h1 class="hero-title">Gen AI Design</h1>
+                        <div style="background: rgba(25, 118, 133, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid #197685;">
                             <p class="hero-subtitle" style="margin: 0; color: #197685; font-weight: 500;">Led research and design for a SaaS AI assistant that helps users quickly uncover insights and take action through natural, guided conversations.</p>
                         </div>
                     </div>
                     
                     <div class="hero-right" style="padding: 0; margin: 0; position: relative; right: -20px;">
-                        <div class="project-hero-image" style="background: none; box-shadow: none; width: calc(100% + 20px); margin: 0; border-radius: 0; min-height: 530px; display: flex; align-items: center; justify-content: center;">
+                        <div class="project-hero-image" style="background: none; box-shadow: none; width: calc(100% + 20px); margin: 0; border-radius: 0; display: flex; align-items: center; justify-content: center;">
                             <img src="Images/Copilot.gif" alt="Copilot AI Assistant Interface" style="border-radius: 20px; width: 100%; height: 100%; max-width: 100%; object-fit: cover; object-position: right center; border: 24px solid #197685;">
                         </div>
                     </div>
@@ -167,8 +174,6 @@
                 <p>Apromore is an enterprise process mining platform that enables analysts to visualize, analyze, and optimize business processes using real operational data.</p>
                 
                 <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #197685; margin: 1.5rem 0 0.8rem;">The Problem</h3>
-                <p>Apromore is an enterprise process mining platform that enables analysts to visualize, analyze, and optimize business processes using real operational data.</p>
-                
                 <p>While the platform already empowered users to explore complex models and uncover inefficiencies, doing so still required significant time, technical expertise, and domain knowledge.</p>
                 
                 <p>As generative AI became more accessible, the business saw an opportunity to augment analyst workflows with a smart assistant, one that could answer questions like:</p>
@@ -178,9 +183,6 @@
                 </ul>
                 
                 <p>This led to the need of an AI chatbot called Apromore AI.</p>
-                
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                
 
             </div>
 
