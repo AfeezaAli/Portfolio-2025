@@ -260,6 +260,28 @@
                 <h2 style="color: #1a1a1a !important; margin: 0 0 1.5rem 0; position: relative; padding-bottom: 20px;">The Outcome</h2>
                 <p>Copilot launched in 2025 as a core part of Apromore's product strategy, positioning the platform at the forefront of AI-powered process improvement.</p>
                 
+                <!-- Image Slider -->
+                <div class="copilot-image-slider" style="margin: 1.5rem 0; width: 100%; max-width: 100%; overflow: hidden; box-sizing: border-box; position: relative;">
+                    <div class="slider-container" style="position: relative; width: 100%; max-width: 100%; overflow: hidden; box-sizing: border-box;">
+                        <div class="slider-track" id="copilotSliderTrack" style="display: flex; transition: transform 0.3s ease; gap: 12px; width: 100%; box-sizing: border-box; overflow: hidden;">
+                            <div class="slider-slide" style="flex: 0 0 calc(25% - 9px); min-width: 0; max-width: calc(25% - 9px); box-sizing: border-box;">
+                                <img src="Images/Copilo001.png" alt="Copilot Interface 1" onclick="openCopilotModal(0)" style="height: 200px; width: 100%; border-radius: 8px; object-fit: fill; cursor: pointer; transition: transform 0.2s ease; display: block;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            </div>
+                            <div class="slider-slide" style="flex: 0 0 calc(25% - 9px); min-width: 0; max-width: calc(25% - 9px); box-sizing: border-box;">
+                                <img src="Images/Copilo002.png" alt="Copilot Interface 2" onclick="openCopilotModal(1)" style="height: 200px; width: 100%; border-radius: 8px; object-fit: fill; cursor: pointer; transition: transform 0.2s ease; display: block;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            </div>
+                            <div class="slider-slide" style="flex: 0 0 calc(25% - 9px); min-width: 0; max-width: calc(25% - 9px); box-sizing: border-box;">
+                                <img src="Images/Copilo003.png" alt="Copilot Interface 3" onclick="openCopilotModal(2)" style="height: 200px; width: 100%; border-radius: 8px; object-fit: fill; cursor: pointer; transition: transform 0.2s ease; display: block;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            </div>
+                            <div class="slider-slide" style="flex: 0 0 calc(25% - 9px); min-width: 0; max-width: calc(25% - 9px); box-sizing: border-box;">
+                                <img src="Images/Copilo004.png" alt="Copilot Interface 4" onclick="openCopilotModal(3)" style="height: 200px; width: 100%; border-radius: 8px; object-fit: fill; cursor: pointer; transition: transform 0.2s ease; display: block;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
                 <h3 style="color: #2c3e50 !important; background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 8px; border-left: 4px solid #197685; margin: 1.5rem 0 0.8rem;">Key Results</h3>
                 <ul>
                     <li><strong>Prototype UX fully approved</strong> after user testing for development and delivered on time</li>
@@ -429,6 +451,27 @@
         </div>
     </footer>
 
+    <!-- Copilot Image Modal -->
+    <div id="copilotImageModal" class="copilot-modal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.8); align-items: center; justify-content: center;">
+        <div class="modal-content" style="position: relative; max-width: 90vw; max-height: 90vh; display: flex; align-items: center; justify-content: center;">
+            <span class="close-copilot-modal" onclick="closeCopilotModal()" style="position: absolute; top: -40px; right: 0; color: white; font-size: 28px; font-weight: bold; cursor: pointer; z-index: 10001;">&times;</span>
+            
+            <button class="modal-nav modal-prev" onclick="navigateCopilotModal('prev')" style="position: absolute; left: -60px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.3); transition: all 0.3s ease; z-index: 10001;">
+                <i class="fas fa-chevron-left" style="color: #197685; font-size: 18px;"></i>
+            </button>
+            
+            <img id="copilotModalImage" src="" alt="Copilot Interface" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 10px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
+            
+            <button class="modal-nav modal-next" onclick="navigateCopilotModal('next')" style="position: absolute; right: -60px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.3); transition: all 0.3s ease; z-index: 10001;">
+                <i class="fas fa-chevron-right" style="color: #197685; font-size: 18px;"></i>
+            </button>
+            
+            <div class="modal-counter" style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); color: white; font-size: 16px; background: rgba(0,0,0,0.5); padding: 8px 16px; border-radius: 20px;">
+                <span id="copilotModalCounter">1 / 4</span>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
     <script>
     (function() {
@@ -467,6 +510,94 @@
         layout();
         requestAnimationFrame(animate);
     })();
+    
+    
+    // Copilot Modal functionality
+    let copilotModalCurrentIndex = 0;
+    const copilotImages = [
+        'Images/Copilo001.png',
+        'Images/Copilo002.png', 
+        'Images/Copilo003.png',
+        'Images/Copilo004.png'
+    ];
+    
+    function openCopilotModal(index) {
+        copilotModalCurrentIndex = index;
+        const modal = document.getElementById('copilotImageModal');
+        const modalImg = document.getElementById('copilotModalImage');
+        const counter = document.getElementById('copilotModalCounter');
+        
+        modal.style.display = 'flex';
+        modalImg.src = copilotImages[index];
+        counter.textContent = `${index + 1} / ${copilotImages.length}`;
+        document.body.style.overflow = 'hidden';
+        
+        updateModalNavigation();
+    }
+    
+    function closeCopilotModal() {
+        const modal = document.getElementById('copilotImageModal');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    
+    function navigateCopilotModal(direction) {
+        if (direction === 'next' && copilotModalCurrentIndex < copilotImages.length - 1) {
+            copilotModalCurrentIndex++;
+        } else if (direction === 'prev' && copilotModalCurrentIndex > 0) {
+            copilotModalCurrentIndex--;
+        }
+        
+        const modalImg = document.getElementById('copilotModalImage');
+        const counter = document.getElementById('copilotModalCounter');
+        
+        modalImg.src = copilotImages[copilotModalCurrentIndex];
+        counter.textContent = `${copilotModalCurrentIndex + 1} / ${copilotImages.length}`;
+        
+        updateModalNavigation();
+    }
+    
+    function updateModalNavigation() {
+        const prevBtn = document.querySelector('.modal-prev');
+        const nextBtn = document.querySelector('.modal-next');
+        
+        if (prevBtn && nextBtn) {
+            prevBtn.style.opacity = copilotModalCurrentIndex === 0 ? '0.5' : '1';
+            nextBtn.style.opacity = copilotModalCurrentIndex === copilotImages.length - 1 ? '0.5' : '1';
+            prevBtn.style.cursor = copilotModalCurrentIndex === 0 ? 'not-allowed' : 'pointer';
+            nextBtn.style.cursor = copilotModalCurrentIndex === copilotImages.length - 1 ? 'not-allowed' : 'pointer';
+        }
+    }
+    
+    // Close modal when clicking outside the image
+    document.addEventListener('click', function(e) {
+        const modal = document.getElementById('copilotImageModal');
+        if (e.target === modal) {
+            closeCopilotModal();
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('copilotImageModal');
+            if (modal.style.display === 'flex') {
+                closeCopilotModal();
+            }
+        }
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        const modal = document.getElementById('copilotImageModal');
+        if (modal.style.display === 'flex') {
+            if (e.key === 'ArrowLeft') {
+                navigateCopilotModal('prev');
+            } else if (e.key === 'ArrowRight') {
+                navigateCopilotModal('next');
+            }
+        }
+    });
     </script>
 </body>
 </html> 
